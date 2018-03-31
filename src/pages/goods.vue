@@ -12,10 +12,24 @@
 <script>
 export default {
   name: 'goods',
+  props: {
+    seller: {
+      type: Object
+    }
+  },
   data() {
     return {
-      msg: ''
+      goods: []
     }
+  },
+  created() {
+    console.log(this.seller);
+    this.$http.get("../static/selldata.json").then(response => {
+      this.goods = response.data.goods;
+      // console.log(this.goods);
+    }, response => {
+      console.log("加载失败");
+    })
   }
 }
 </script>
@@ -35,6 +49,5 @@ export default {
     background: #f3f5f7
   .foods-wrapper
     flex: 1
-
 
 </style>

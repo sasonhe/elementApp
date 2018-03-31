@@ -1,15 +1,13 @@
 <template>
 <div id="app">
   <Header :seller="seller"></Header>
-  <div class="tab">
-    <div class="tab border-1px">
-      <router-link to="/" exact class="tab-item">商品</router-link>
-      <router-link to="/Ratings" exact class="tab-item">评论</router-link>
-      <router-link to="/seller" exact class="tab-item">商家</router-link>
-    </div>
-  </div>
+  <nav class="tab border-1px">
+    <router-link to="/" exact class="tab-item">商品</router-link>
+    <router-link to="/Ratings" exact class="tab-item">评论</router-link>
+    <router-link to="/seller" exact class="tab-item">商家</router-link>
+  </nav>
   <keep-alive>
-    <router-view></router-view>
+    <router-view :seller="seller"></router-view>
   </keep-alive>
 </div>
 </template>
@@ -27,7 +25,6 @@ export default {
 
     this.$http.get("../static/selldata.json").then(response => {
       this.seller = response.data.seller;
-      console.log(this.seller);
     }, response => {
       console.log("加载失败");
     })
