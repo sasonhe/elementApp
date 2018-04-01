@@ -14,7 +14,7 @@
       <li v-for="item in goods" class="foods-list">
         <h1 class="title">{{item.name}}</h1>
         <ul>
-          <li v-for="food in item.foods" class="food-iten">
+          <li v-for="food in item.foods" class="food-iten border-1px">
             <div class="icon">
               <img :src="food.icon" alt="">
             </div>
@@ -119,4 +119,5 @@ export default {
     .food-iten
       display: flex
       margin: 18px
+      border-1px(rgba(7, 17, 27, 0.1))
 </style>
