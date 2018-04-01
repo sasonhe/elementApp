@@ -87,11 +87,6 @@ export default {
   },
   created() {
     this.classMap = ["decrease", "discount", "special", "invoice", "guarantee"]
-    // this.$http.get('../static/selldata.json').then((response) => {
-    //   this.goods = response.data;
-    //   console.log(this.goods);
-    // });
-
   },
   components: {
     star,
