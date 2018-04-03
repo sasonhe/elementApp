@@ -35,7 +35,9 @@
       </li>
     </ul>
   </div>
-  <shopcart></shopcart>
+  <shopcart :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice">
+
+  </shopcart>
 </div>
 </template>
 
@@ -44,14 +46,15 @@ import BScroll from 'better-scroll';
 import shopcart from '../components/shopcart.vue';
 export default {
   name: 'goods',
-  props: {
-    seller: {
-      type: Object
-    }
-  },
+  // props: {
+  //   seller: {
+  //     type: Object
+  //   }
+  // },
   data() {
     return {
       goods: [],
+      seller: {},
       listHeight: [],
       scrollY: 0
     }
@@ -60,6 +63,7 @@ export default {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     this.$http.get("../static/selldata.json").then(response => {
       this.goods = response.data.goods;
+      this.seller = response.data.seller;
       this.$nextTick(() => {
         this._initScroll();
         this._calculateHeight();
@@ -79,6 +83,17 @@ export default {
         }
       }
       return 0;
+    },
+    selectFoods() {
+      let foods = [];
+      this.goods.forEach((good) => {
+        good.foods.forEach((food) => {
+          if (food.count) {
+            foods.push(food);
+          }
+        });
+      });
+      return foods;
     }
   },
   methods: {
