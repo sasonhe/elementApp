@@ -38,8 +38,7 @@
       </li>
     </ul>
   </div>
-  <shopcart :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice">
-  </shopcart>
+  <shopcart :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopcart>
 </div>
 </template>
 
@@ -210,7 +209,7 @@ export default {
     .food-iten
       display: flex
       margin: 18px
-      margin-bottom: 18px
+      padding-bottom: 18px
       border-1px(rgba(7, 17, 27, 0.1))
       &:last-child
         border-none()
