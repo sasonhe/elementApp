@@ -40,7 +40,7 @@
               <span>￥{{food.price*food.count}}</span>
             </div>
             <div class="cartcontrol-wrapper">
-              <cartcontrol @add="addFood" :food="food"></cartcontrol>
+              <cartControl @add="addFood" :food="food"></cartControl>
             </div>
           </li>
         </ul>
@@ -55,7 +55,7 @@
 
 <script>
 import BScroll from 'better-scroll';
-import cartcontrol from './cartControl.vue';
+import cartControl from './cartControl.vue';
 export default {
   name: 'shopcart',
   props: {
@@ -216,10 +216,13 @@ export default {
         return;
       }
       window.alert(`支付${this.totalPrice}元`);
-    }
+    },
+    addFood(target) {
+      this.drop(target);
+    },
   },
   components: {
-    cartcontrol
+    cartControl
   }
 
 }
