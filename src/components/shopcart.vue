@@ -11,7 +11,7 @@
       <div class="price" :class="{'highlight':totalPrice>0}">￥{{totalPrice}}</div>
       <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
     </div>
-    <div class="content-right">
+    <div class="content-right" @click.stop.prevent="pay">
       <div class="pay" :class="payClass">
         {{payDesc}}
       </div>
@@ -380,19 +380,19 @@ export default {
           position: absolute
           right: 0
           bottom: 6px
-  .list-mask
-    position: fixed
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    z-index: -2
-    backdrop-filter: blur(10px)
-    opacity: 1
-    background: rgba(7, 17, 27, 0.6)
-    &.fade-enter-active, &.fade-leave-active
-      transition: all 0.5s
-    &.fade-enter, &.fade-leave-active
-      opacity: 0
-      background: rgba(7, 17, 27, 0)
+.list-mask
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -2
+  backdrop-filter: blur(10px)
+  opacity: 1
+  background: rgba(7, 17, 27, 0.6)
+  &.fade-enter-active, &.fade-leave-active
+    transition: all 0.5s
+  &.fade-enter, &.fade-leave-active
+    opacity: 0
+    background: rgba(7, 17, 27, 0)
 </style>
